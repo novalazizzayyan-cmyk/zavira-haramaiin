@@ -1,0 +1,779 @@
+/* ============================================
+   STYLE.CSS - Zavira Haramain
+   ============================================
+   Semua warna menggunakan variabel CSS di :root
+   agar mudah diganti oleh mahasiswa.
+   Cari bagian "GANTI" untuk menyesuaikan warna.
+   ============================================ */
+
+
+/* ============================================
+   VARIABEL WARNA
+   Ubah nilai di bawah ini untuk mengganti
+   seluruh warna website sekaligus.
+   ============================================ */
+:root {
+    /* --- GANTI: Warna Utama (Primary) --- */
+    /* Pilih hijau yang diinginkan */
+    --warna-utama: #1B7A3D;
+    /* Versi gelap untuk hover */
+    --warna-utama-gelap: #145C2E;
+    /* Versi sangat terang untuk background tipis */
+    --warna-utama-terang: #E8F5E9;
+
+    /* --- GANTI: Warna Kuning (Aksen) --- */
+    --warna-kuning: #F5C518;
+    --warna-kuning-terang: #FFF8E1;
+
+    /* --- GANTI: Warna Sekunder (Biru) --- */
+    --warna-sekunder: #1565C0;
+    /* GANTI: Warna biru muda untuk background card */
+    --warna-sekunder-terang: #E3F2FD;
+
+    /* --- GANTI: Warna Aksen (Abu-abu) --- */
+    --warna-aksen: #757575;
+    --warna-aksen-terang: #F5F5F5;
+
+    /* --- GANTI: Warna Background --- */
+    --warna-bg-utama: #FFFFFF;
+    --warna-bg-alt: #FAFAFA;
+
+    /* --- GANTI: Warna Teks --- */
+    --warna-teks-utama: #1A1A1A;
+    --warna-teks-sekunder: #FFFFFF;
+    --warna-teks-ringan: #555555;
+
+    /* --- Warna Footer --- */
+    --warna-footer-bg: #0D3B1E;
+    --warna-footer-teks: #E0E0E0;
+
+    /* --- Ukuran & Efek (tidak perlu diganti) --- */
+    --radius: 12px;
+    --radius-kecil: 8px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-hover: 0 6px 24px rgba(0,0,0,0.13);
+    --max-width: 1100px;
+    --transisi: 0.3s ease;
+}
+
+
+/* ============================================
+   RESET & BASE
+   Menghapus margin/padding bawaan browser
+   ============================================ */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* Font default sistem, tidak perlu font eksternal */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--warna-teks-utama);
+    background-color: var(--warna-bg-utama);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* ============================================
+   CONTAINER
+   Membatasi lebar konten agar nyaman dibaca
+   ============================================ */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+
+/* ============================================
+   TOMBOL (BUTTON)
+   ============================================ */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: var(--radius-kecil);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all var(--transisi);
+    text-align: center;
+}
+
+/* Tombol utama berwarna hijau */
+.btn-primary {
+    background-color: var(--warna-utama);
+    color: var(--warna-teks-sekunder);
+}
+.btn-primary:hover {
+    background-color: var(--warna-utama-gelap);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(27,122,61,0.3);
+}
+
+/* Tombol outline (hanya border) */
+.btn-outline {
+    border-color: var(--warna-utama);
+    color: var(--warna-utama);
+    background: transparent;
+}
+.btn-outline:hover {
+    background-color: var(--warna-utama);
+    color: var(--warna-teks-sekunder);
+    transform: translateY(-2px);
+}
+
+/* Tombol besar untuk section Akses */
+.btn-akses {
+    background-color: var(--warna-kuning);
+    color: var(--warna-teks-utama);
+    padding: 18px 48px;
+    font-size: 1.1rem;
+    border-radius: var(--radius);
+    font-weight: 700;
+}
+.btn-akses:hover {
+    background-color: #E0B000;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(245,197,24,0.4);
+}
+
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--warna-bg-utama);
+    z-index: 1000;
+    padding: 16px 0;
+    transition: box-shadow var(--transisi), padding var(--transisi);
+}
+
+/* Efek shadow saat di-scroll */
+.navbar.scrolled {
+    box-shadow: 0 2px 16px rgba(0,0,0,0.1);
+    padding: 10px 0;
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--warna-utama);
+}
+
+/* Link navigasi (desktop) */
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--warna-teks-ringan);
+    transition: color var(--transisi);
+    position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--warna-utama);
+}
+
+/* Garis bawah pada link aktif */
+.nav-links a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--warna-utama);
+    border-radius: 2px;
+}
+
+/* Tombol Hamburger (hidden di desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    background-color: var(--warna-teks-utama);
+    border-radius: 2px;
+    transition: all var(--transisi);
+}
+
+/* Animasi hamburger jadi X */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Overlay gelap */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 999;
+}
+.nav-overlay.active {
+    display: block;
+}
+
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    background: linear-gradient(
+        135deg,
+        var(--warna-utama-terang) 0%,
+        var(--warna-bg-utama) 50%,
+        var(--warna-kuning-terang) 100%
+    );
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--warna-utama);
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.hero-tagline {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #B8860B;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.hero-deskripsi {
+    font-size: 1rem;
+    color: var(--warna-teks-ringan);
+    margin-bottom: 32px;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-hover);
+    transition: transform var(--transisi);
+}
+.hero-image img:hover {
+    transform: scale(1.02);
+}
+
+
+/* ============================================
+   SECTION UMUM
+   ============================================ */
+.section {
+    padding: 80px 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--warna-teks-utama);
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: var(--warna-teks-ringan);
+    max-width: 600px;
+    margin: 0 auto 8px;
+}
+
+.section-target {
+    font-size: 0.9rem;
+    color: var(--warna-aksen);
+    margin-top: 8px;
+}
+
+
+/* ============================================
+   CARD UMUM
+   ============================================ */
+.card {
+    background-color: var(--warna-bg-utama);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--shadow);
+    transition: transform var(--transisi), box-shadow var(--transisi);
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* ============================================
+   MASALAH SECTION
+   ============================================ */
+.masalah-section {
+    background-color: var(--warna-bg-alt);
+}
+
+.masalah-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.card-masalah {
+    border-top: 4px solid var(--warna-utama);
+    text-align: center;
+}
+
+.card-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--warna-utama-terang);
+    -webkit-text-stroke: 2px var(--warna-utama);
+    margin-bottom: 16px;
+    line-height: 1;
+}
+
+.card-masalah h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+
+/* ============================================
+   SOLUSI SECTION
+   ============================================ */
+.solusi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 48px;
+}
+
+.solusi-deskripsi {
+    font-size: 1rem;
+    color: var(--warna-teks-ringan);
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+.solusi-subjudul {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--warna-utama);
+    margin-bottom: 16px;
+}
+
+.cara-kerja {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.langkah {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.langkah-number {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+    background-color: var(--warna-utama);
+    color: var(--warna-teks-sekunder);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.langkah p {
+    font-size: 0.95rem;
+}
+
+.solusi-image img {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* Manfaat */
+.manfaat-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--warna-utama-terang);
+    padding: 32px;
+    border-radius: var(--radius);
+    border-left: 4px solid var(--warna-utama);
+}
+
+.manfaat-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.manfaat-icon {
+    font-size: 1.2rem;
+    min-width: 30px;
+    text-align: center;
+    margin-top: 2px;
+    color: var(--warna-utama);
+    font-weight: 700;
+}
+
+.manfaat-item h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.manfaat-item p {
+    font-size: 0.9rem;
+    color: var(--warna-teks-ringan);
+    line-height: 1.7;
+}
+
+
+/* ============================================
+   FITUR SECTION
+   ============================================ */
+.fitur-section {
+    background-color: var(--warna-sekunder-terang);
+}
+
+.fitur-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.fitur-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+
+.card-fitur h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.card-fitur p {
+    font-size: 0.9rem;
+    color: var(--warna-teks-ringan);
+    line-height: 1.7;
+}
+
+
+/* ============================================
+   AKSES SECTION
+   ============================================ */
+.akses-section {
+    background: linear-gradient(135deg, var(--warna-utama) 0%, var(--warna-utama-gelap) 100%);
+}
+
+.akses-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.akses-content h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--warna-teks-sekunder);
+    margin-bottom: 16px;
+}
+
+.akses-content p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 32px;
+    line-height: 1.8;
+}
+
+.akses-catatan {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    margin-top: 16px;
+}
+
+
+/* ============================================
+   TIM SECTION
+   ============================================ */
+.tim-section {
+    background-color: var(--warna-bg-alt);
+}
+
+.tim-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+}
+
+.card-tim {
+    text-align: center;
+    padding: 24px 16px;
+}
+
+/* Foto bulat */
+.tim-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 16px;
+    border: 3px solid var(--warna-utama-terang);
+}
+
+.tim-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-tim h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.tim-role {
+    font-size: 0.8rem;
+    color: var(--warna-utama);
+    font-weight: 500;
+}
+
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    background-color: var(--warna-footer-bg);
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-content h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--warna-teks-sekunder);
+    margin-bottom: 8px;
+}
+
+.footer-content p {
+    font-size: 0.9rem;
+    color: var(--warna-footer-teks);
+}
+
+.footer-tagline {
+    font-style: italic;
+    margin-top: 4px;
+    opacity: 0.7;
+}
+
+
+/* ============================================
+   FALLBACK GAMBAR
+   Tampilan jika gambar gagal dimuat
+   ============================================ */
+.img-fallback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--warna-aksen-terang);
+    color: var(--warna-aksen);
+    border-radius: var(--radius);
+    padding: 40px 20px;
+    font-size: 0.9rem;
+    text-align: center;
+    min-height: 200px;
+}
+.img-fallback-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+
+/* ============================================
+   ANIMASI SCROLL
+   Elemen muncul (fade-in dari bawah)
+   saat discroll ke posisinya
+   ============================================ */
+.animasi-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animasi-scroll.tampil {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ============================================
+   RESPONSIVE - TABLET (max-width: 900px)
+   ============================================ */
+@media (max-width: 900px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+    .masalah-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .solusi-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .tim-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* ============================================
+   RESPONSIVE - MOBILE (max-width: 640px)
+   ============================================ */
+@media (max-width: 640px) {
+    /* Navbar menjadi sidebar di mobile */
+    .hamburger {
+        display: flex;
+    }
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 280px;
+        height: 100vh;
+        background-color: var(--warna-bg-utama);
+        flex-direction: column;
+        padding: 80px 32px 32px;
+        gap: 0;
+        box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+        transition: right var(--transisi);
+        z-index: 1000;
+    }
+    .nav-links.active {
+        right: 0;
+    }
+    .nav-links li {
+        border-bottom: 1px solid var(--warna-aksen-terang);
+    }
+    .nav-links a {
+        display: block;
+        padding: 16px 0;
+        font-size: 1rem;
+    }
+
+    /* Hero */
+    .hero {
+        padding-top: 100px;
+        padding-bottom: 48px;
+    }
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+    .hero-tagline {
+        font-size: 1rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+    }
+    .hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Section */
+    .section
